@@ -1,6 +1,18 @@
 # AI Voice Clone with Coqui XTTS-v2
 Free voice cloning for creators using Coqui XTTS-v2 on Google Colab. Clone your voice with just 2-5 minutes of audio for consistent narration. Complete guide to build your own notebook. Non-commercial use only.
 
+[![CI](https://github.com/Yaakovyitzchak1231/AI-Voice-Clone-with-Coqui-XTTS-v2/workflows/CI/badge.svg)](https://github.com/Yaakovyitzchak1231/AI-Voice-Clone-with-Coqui-XTTS-v2/actions)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 📚 Documentation
+
+- **[Installation Guide](docs/installation.md)** - Setup instructions
+- **[Usage Guide](docs/usage.md)** - How to use the package
+- **[API Reference](docs/api.md)** - Complete API documentation
+- **[Repository Structure](STRUCTURE.md)** - Overview of the project structure
+- **[Examples](examples/)** - Working code examples
+
 ## Overview
 
 **Coqui XTTS-v2** is a multilingual text-to-speech model with zero-shot voice cloning capabilities. It uses a Transformer architecture similar to GPT-style autoregressive models combined with a VQ-VAE (Vector Quantized Variational AutoEncoder) to generate realistic speech in 16+ languages from just a few seconds of reference audio.
@@ -221,6 +233,48 @@ transformers < 4.50.0
 > **to ensure** ```BeamSearchScorer``` **remains available and XTTS-v2 loads correctly**
 
 ___
+## 📦 Python Package Usage
+
+In addition to the Colab notebook, this repository now includes a Python package for local use:
+
+```python
+from xtts_voice_clone import VoiceCloner
+
+# Initialize and load model
+cloner = VoiceCloner()
+cloner.load_model()
+
+# Generate voice clone
+cloner.clone_voice(
+    text="Your text here",
+    speaker_wav="path/to/your/audio.wav",
+    language="en",
+    output_path="output.wav"
+)
+```
+
+**Installation:**
+```bash
+pip install -r requirements.txt
+```
+
+See the [Usage Guide](docs/usage.md) for more details and [examples/](examples/) for working code.
+
+___
+## 🏗️ Repository Structure
+
+This repository is organized as a professional Python project:
+
+- **`src/xtts_voice_clone/`** - Python package for voice cloning
+- **`tests/`** - Comprehensive test suite
+- **`examples/`** - Working example scripts
+- **`docs/`** - Detailed documentation
+- **`notebooks/`** - Google Colab scripts
+- **`.github/workflows/`** - CI/CD automation
+
+See [STRUCTURE.md](STRUCTURE.md) for a complete overview.
+
+___
 ## License
 
 This repository's code and documentation: MIT License
@@ -245,6 +299,12 @@ We're grateful to the open-source community for making voice cloning accessible 
 - Colab Pro and Pay As You Go offer increased compute availability based on your compute unit balance.
 - If unavailable, wait 12+ hours or consider Colab Pro ($9.99/month) for increased access.
 
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Support
-Questions? Check the video tutorial or open an issue!
+
+- 📖 Check the [documentation](docs/)
+- 🎥 Watch the [video tutorial](https://youtu.be/CgDs8WL5YSE)
+- 🐛 [Open an issue](https://github.com/Yaakovyitzchak1231/AI-Voice-Clone-with-Coqui-XTTS-v2/issues) for bug reports or feature requests
