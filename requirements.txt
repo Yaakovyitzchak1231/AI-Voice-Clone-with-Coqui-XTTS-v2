@@ -1,0 +1,14 @@
+# Core dependencies for Coqui XTTS-v2 Voice Cloning
+TTS>=0.20.0
+torch==2.1.0
+torchaudio==2.1.0
+transformers<4.50.0
+
+# Additional utilities
+numpy>=1.24.0
+scipy>=1.10.0
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# For Colab compatibility
+google-colab; platform_system == "Linux"
