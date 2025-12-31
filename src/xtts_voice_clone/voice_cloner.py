@@ -6,6 +6,7 @@ import os
 import torch
 from typing import Optional
 from TTS.api import TTS
+from .utils import validate_audio_file, ensure_output_dir
 
 
 class VoiceCloner:
@@ -62,9 +63,27 @@ class VoiceCloner:
             
         Returns:
             Path to the generated audio file.
+            
+        Raises:
+            RuntimeError: If model is not loaded.
+            FileNotFoundError: If speaker_wav file does not exist.
+            ValueError: If speaker_wav has unsupported format.
         """
         if self.tts is None:
             raise RuntimeError("Model not loaded. Call load_model() first.")
+        
+        # Validate input audio file
+        if not validate_audio_file(speaker_wav):
+            if not os.path.exists(speaker_wav):
+                raise FileNotFoundError(f"Speaker audio file not found: {speaker_wav}")
+            else:
+                raise ValueError(
+                    f"Unsupported audio format: {speaker_wav}. "
+                    "Supported formats: .wav, .mp3, .m4a, .flac"
+                )
+        
+        # Ensure output directory exists
+        ensure_output_dir(output_path)
             
         self.tts.tts_to_file(
             text=text,
